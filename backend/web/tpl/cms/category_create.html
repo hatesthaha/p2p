@@ -1,0 +1,53 @@
+<div class="bg-light lter b-b wrapper-md" ng-controller="CategoryController">
+    <h1 class="m-n font-thin h3">{{title}}</h1>
+</div>
+<div class="wrapper-md" ng-controller="CategoryController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            基本内容
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" ng-submit="save()" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">栏目标题</label>
+
+                    <div class="col-sm-5">
+                        <input type="text" ng-model="post.title" class="form-control" placeholder="栏目标题" required>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上级栏目</label>
+
+                    <div class="col-sm-5">
+                        <select class="form-control m-t" ng-options="m.name for m in catrgoryItem.data" ng-model="post.parent" required >
+                            <option value="">请选择栏目</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">状态</label>
+
+                    <div class="col-sm-10">
+                        <div class="btn-group m-r ng-scope">
+                            <label class="btn btn-default ng-untouched ng-valid ng-dirty" ng-model="post.status"
+                                   btn-radio="'10'">显示</label>
+                            <label class="btn btn-default ng-untouched ng-valid ng-dirty" ng-model="post.status"
+                                   btn-radio="'0'">隐藏</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

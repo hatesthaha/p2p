@@ -1,0 +1,310 @@
+<div class="bg-light lter b-b wrapper-md" ng-controller="productcreateController">
+    <h1 class="m-n font-thin h3">{{title}}</h1>
+</div>
+<div class="wrapper-md" ng-controller="productcreateController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            基本内容
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" ng-submit="save()" method="post">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">标题名称</label>
+
+                    <div class="col-sm-5">
+                        <input type="text" ng-model="post.title" class="form-control" placeholder="标题名称">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">最大投资额</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="post.amount" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">购买时间开始</label>
+
+                    <div class="col-sm-5">
+                        <div class="input-group w-md">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                   ng-model="buy_time_start" is-open="opened" datepicker-options="dateOptions"
+                                   ng-required="true" close-text="Close"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">购买时间结束</label>
+
+                    <div class="col-sm-5">
+                        <div class="input-group w-md">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}"
+                                   ng-model="buy_time_end" is-open="opentwoed" datepicker-options="dateOptions"
+                                   ng-required="true" close-text="Close"/>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="opentwo($event)"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">每个人最大购买量</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="post.each_max" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">每个人最少购买量</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="post.each_min" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">利率</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="post.rate" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">期限(单位：月)</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="post.invest_date" type="text" class="form-control">
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">类型</label>
+
+                    <div class="col-sm-5">
+                        <select class="form-control m-t" ng-options="m.name for m in typedata" ng-model="post.type"
+                                required>
+                            <option value="">请选择类型</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">上传图片</label>
+
+                    <div class="col-sm-5">
+                        <input type="file" nv-file-select="" uploader="uploader" multiple/>
+                    </div>
+
+                    <div class="col">
+
+                        <div class="wrapper-md">
+                            <table class="table bg-white-only b-a">
+                                <thead>
+                                <tr>
+                                    <th width="50%">图片名称</th>
+                                    <th ng-show="uploader.isHTML5">进程</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in uploader.queue">
+                                    <td><strong>{{ item.file.name }}</strong></td>
+                                    <td ng-show="uploader.isHTML5">
+                                        <div class="progress progress-sm m-b-none m-t-xs">
+                                            <div class="progress-bar bg-info" role="progressbar"
+                                                 ng-style="{ 'width': item.progress + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-show="item.isSuccess" class="text-success"><i
+                                                class="glyphicon glyphicon-ok"></i></span>
+                                        <span ng-show="item.isCancel" class="text-warning"><i
+                                                class="glyphicon glyphicon-ban-circle"></i></span>
+                                        <span ng-show="item.isError" class="text-danger"><i
+                                                class="glyphicon glyphicon-remove"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()"
+                                                ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            上传
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()"
+                                                ng-disabled="!item.isUploading">
+                                            取消
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                                            删除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="img in imgs" >
+                                    <td><strong>{{ img }}</strong></td>
+                                    <td>
+                                        <div class="progress progress-sm m-b-none m-t-xs">
+                                            <div class="progress-bar bg-info" role="progressbar"
+                                                 ng-style="{ 'width': 100 + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span  class="text-success"><i
+                                                class="glyphicon glyphicon-ok"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-default btn-xs"
+                                                ng-disabled="true">
+                                            上传
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs"
+                                                ng-disabled="true">
+                                            取消
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="imgremove(img)">
+                                            删除
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div>
+                                <div>
+                                    <p>操作状态:</p>
+
+                                    <div class="progress bg-light dker" style="">
+                                        <div class="progress-bar progress-bar-striped bg-info" role="progressbar"
+                                             ng-style="{ 'width': uploader.progress + '%' }"></div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-addon btn-success" ng-click="uploader.uploadAll()"
+                                        ng-disabled="!uploader.getNotUploadedItems().length">
+                                    <i class="fa fa-arrow-circle-o-up"></i> 上传所有
+                                </button>
+                                <button type="button" class="btn btn-addon btn-warning" ng-click="uploader.cancelAll()"
+                                        ng-disabled="!uploader.isUploading">
+                                    <i class="fa fa-ban"></i> 取消所有
+                                </button>
+                                <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()"
+                                        ng-disabled="!uploader.queue.length">
+                                    <i class="fa fa-trash-o"></i> 删除所有
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">介绍</label>
+
+                    <div class="col-sm-10">
+                        <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
+                            <div class="btn-group dropdown" dropdown>
+                                <a class="btn btn-default" dropdown-toggle tooltip="Font"><i class="fa fa-font"></i><b
+                                        class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
+                                    <li><a href data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
+                                    <li><a href data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group dropdown" dropdown>
+                                <a class="btn btn-default" dropdown-toggle data-toggle="dropdown" tooltip="Font Size"><i
+                                        class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
+                                    <li><a href data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
+                                    <li><a href data-edit="fontSize 1" style="font-size:14px">Small</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i
+                                        class="fa fa-bold"></i></a>
+                                <a class="btn btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i
+                                        class="fa fa-italic"></i></a>
+                                <a class="btn btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i
+                                        class="fa fa-strikethrough"></i></a>
+                                <a class="btn btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i
+                                        class="fa fa-underline"></i></a>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i
+                                        class="fa fa-list-ul"></i></a>
+                                <a class="btn btn-default" data-edit="insertorderedlist" tooltip="Number list"><i
+                                        class="fa fa-list-ol"></i></a>
+                                <a class="btn btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i
+                                        class="fa fa-dedent"></i></a>
+                                <a class="btn btn-default" data-edit="indent" tooltip="Indent (Tab)"><i
+                                        class="fa fa-indent"></i></a>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-default" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i
+                                        class="fa fa-align-left"></i></a>
+                                <a class="btn btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i
+                                        class="fa fa-align-center"></i></a>
+                                <a class="btn btn-default" data-edit="justifyright"
+                                   tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
+                                <a class="btn btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i
+                                        class="fa fa-align-justify"></i></a>
+                            </div>
+                            <div class="btn-group dropdown" dropdown>
+                                <a class="btn btn-default" dropdown-toggle tooltip="Hyperlink"><i
+                                        class="fa fa-link"></i></a>
+
+                                <div class="dropdown-menu">
+                                    <div class="input-group m-l-xs m-r-xs">
+                                        <input class="form-control input-sm" id="LinkInput" placeholder="URL"
+                                               type="text" data-edit="createLink"/>
+
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-sm btn-default" type="button">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-default" data-edit="unlink" tooltip="Remove Hyperlink"><i
+                                        class="fa fa-cut"></i></a>
+                            </div>
+
+                            <div class="btn-group">
+                                <a class="btn btn-default" tooltip="Insert picture (or just drag & drop)"
+                                   id="pictureBtn"><i class="fa fa-picture-o"></i></a>
+                                <input type="file" data-edit="insertImage"
+                                       style="position:absolute; opacity:0; width:41px; height:34px"/>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-default" data-edit="undo" tooltip="Undo (Ctrl/Cmd+Z)"><i
+                                        class="fa fa-undo"></i></a>
+                                <a class="btn btn-default" data-edit="redo" tooltip="Redo (Ctrl/Cmd+Y)"><i
+                                        class="fa fa-repeat"></i></a>
+                            </div>
+                        </div>
+                        <div ui-jq="wysiwyg" id="contenttext" class="form-control"
+                             style="overflow:scroll;height:200px;max-height:200px"></div>
+                    </div>
+                </div>
+
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

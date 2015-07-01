@@ -1,0 +1,1 @@
+<?= \kucha\ueditor\UEditor::widget(['name' => 'content']) ?>

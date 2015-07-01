@@ -1,0 +1,25 @@
+<!-- list -->
+<ul class="nav" ng-controller="NavController">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span>导航</span>
+    </li>
+    <li ng-repeat="navItem in navItems">
+        <a href class="auto">
+            <span class="pull-right text-muted">
+                <i class="fa fa-fw fa-angle-right text"></i>
+                <i class="fa fa-fw fa-angle-down text-active"></i>
+            </span>
+            <i class="glyphicon glyphicon-th-large icon text-success"></i>
+            <span class="font-bold">{{navItem[0]}}</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active" ng-repeat="item in navItem.child">
+                <a ui-sref="{{item['sref']}}" href="#/app/{{item[1]}}">
+                    <span>{{item[0]}}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<!-- / list -->

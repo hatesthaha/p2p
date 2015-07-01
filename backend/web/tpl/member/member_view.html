@@ -1,0 +1,124 @@
+<div class="bg-light lter b-b wrapper-md" ng-controller="ViewController">
+    <h1 class="m-n font-thin h3">{{title}}</h1>
+</div>
+<div class="wrapper-md" ng-controller="ViewController">
+    <div class="row">
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="label bg-danger pull-right m-t-xs"></span>
+                会员信息
+            </div>
+            <table class="table table-striped m-b-none">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>{{data.member.idcard_name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        体验金上线
+                    </td>
+                    <td>{{data.asset.experience_money_max}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        银行卡号
+                    </td>
+                    <td>{{data.asset.bank_card.cardId}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        体验金增长
+                    </td>
+                    <td>{{data.asset.experience_money_max_inc}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员金钱
+                    </td>
+                    <td>{{data.asset.money}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员邮箱
+                    </td>
+                    <td>{{data.member.email}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员身份证
+                    </td>
+                    <td>{{data.member.idcard}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员手机
+                    </td>
+                    <td>{{data.member.phone}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员状态
+                    </td>
+                    <td><span class="{{selectstatus}}">{{data.member.status}}</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        注册时间
+                    </td>
+                    <td>{{data.member.created_at}}</td>
+                </tr>
+                <tr ng-repeat="memother in memothers ">
+                    <td>{{memother.table}}</td>
+                    <td>{{memother.row}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="wrapper-md" ng-controller="ViewController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            会员好友
+        </div>
+        <div>
+            <table class="table m-b-none" ui-jq="footable" data-page-size="5">
+                <thead>
+                <tr>
+                    <th>
+                        用户名
+                    </th>
+                    <th>
+                        电话
+                    </th>
+                    <th>
+                        身份证
+                    </th>
+                    <th>
+                        邮箱
+                    </th>
+                    <th>
+                        状态
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="friend in friends ">
+                    <td>{{friend.idcard_name}}</td>
+                    <td>{{friend.phone}}</td>
+                    <td>{{friend.idcard}}</td>
+                    <td>{{friend.email}}</td>
+                    <td><span class="label bg-success" title="{{activestatus}}}">{{friend.status}}</span></td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

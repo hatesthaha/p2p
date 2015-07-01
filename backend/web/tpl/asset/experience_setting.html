@@ -1,0 +1,109 @@
+<div class="bg-light lter b-b wrapper-md" ng-controller="experienceController">
+    <h1 class="m-n font-thin h3">体验金设置</h1>
+</div>
+<div class="wrapper-md" ng-controller="experienceController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            基本设置
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" ng-submit="save()" method="post">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">验证邮箱成功</label>
+
+                    <div class="col-sm-5">
+                        <input type="text" ng-model="experience.verify_success_email" class="form-control"  required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">验证手机成功得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.verify_success_phone" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">第一次充值得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.firstMoney" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">填写身份证得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.firstIdcard" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">绑定玖信账号得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.jiuxin" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">绑定微账号得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.wechat" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户通过邀请码注册父级得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.invitationParent" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户通过邀请码第九个注册父级得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.invitationParentConut9" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户通过邀请码第九个注册自己得分</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.invitationConut9" type="text" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">红包金额（1000,2000,5000,9000,7500）</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.gift" type="text" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">用户初始化体验金上限</label>
+
+                    <div class="col-sm-5">
+                        <input ng-model="experience.initEmMax" type="text" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-4">
+
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

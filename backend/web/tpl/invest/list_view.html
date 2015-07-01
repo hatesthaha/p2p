@@ -1,0 +1,86 @@
+<div class="bg-light lter b-b wrapper-md" ng-controller="ViewController">
+    <h1 class="m-n font-thin h3">{{title}}</h1>
+</div>
+<div class="wrapper-md" ng-controller="ViewController">
+    <div class="row">
+    <div class="col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="label bg-danger pull-right m-t-xs"></span>
+                投资详情信息
+            </div>
+            <table class="table table-striped m-b-none">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>{{data.member_idcard_name}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        投资产品
+                    </td>
+                    <td ng-bind-html="data.invest_introduce"></td>
+                </tr>
+                <tr>
+                    <td>
+                        身份证
+                    </td>
+                    <td>{{data.member_idcard}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        手机
+                    </td>
+                    <td>{{data.member_phone}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        投资金额
+                    </td>
+                    <td>{{data.investment_sum}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        投资时间
+                    </td>
+                    <td>{{data.interest_time}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        支付状态
+                    </td>
+                    <td>{{data.interest_status}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员邮箱
+                    </td>
+                    <td>{{data.member_email}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员身份认证
+                    </td>
+                    <td>{{data.member_idcard_status}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        会员状态
+                    </td>
+                    <td><span class="{{selectstatus}}">{{data.member_status}}</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        注册时间
+                    </td>
+                    <td>{{data.member_created_at}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>

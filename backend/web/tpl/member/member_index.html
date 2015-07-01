@@ -1,0 +1,41 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">会员管理</h1>
+</div>
+<div class="wrapper-sm" ng-controller="ToolBarMoreMenuCtrl">
+    <div class="row">
+       <div class="col-sm-8" id="alertwarn">
+           <alert ng-repeat="alert in alerts" type="warning" close="closeAlert($index)">{{alert.msg}}</alert>
+       </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-3">
+            <button class="btn m-b-xs w-xs {{btnSelect}}" ng-click="openlistEditor()" ng-switch on="editGroup.btnEdit" >
+                <span ng-switch-when="true">详情</span>
+                <span ng-switch-default>详情</span>
+            </button>
+
+            <button class="btn m-b-xs w-xs btn-danger"  ng-click="opendellist()" >锁定</button>
+        </div>
+        <div class="col-sm-3">
+            <form ng-submit="search()" ng-controller="ToolBarMoreMenuCtrl" style="margin:0">
+            <div class="input-group">
+                <input class="form-control" type="text" name="searchText" ng-model="searchText" placeholder="搜索">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">搜索</button>
+              </span>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="wrapper-md" ng-controller="MemsCtrl">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            用户列表
+        </div>
+        <div class="table-responsive">
+            <div ng-grid="gridOptions" style="min-height:420px"></div>
+        </div>
+    </div>
+</div>

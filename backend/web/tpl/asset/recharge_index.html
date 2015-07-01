@@ -1,0 +1,55 @@
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">充值列表</h1>
+</div>
+<div class="wrapper-sm" ng-controller="ToolBarMoreMenuCtrl">
+    <div class="row">
+
+    </div>
+    <div class="row" >
+        <div class="col-sm-5">
+            <form ng-submit="search()" ng-controller="ToolBarMoreMenuCtrl" style="margin:0">
+            <div class="input-group">
+                <input class="form-control" type="text" name="searchText" ng-model="searchText" placeholder="搜索">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">搜索</button>
+              </span>
+            </div>
+            </form>
+        </div>
+        <div class="col-sm-5">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dtstart"
+                       name="startDate" min="minDate" is-open="opened" datepicker-options="dateOptions"
+                       ng-required="true"  date-disabled="disabled(date, mode)"  />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" >至</button>
+                </span>
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dtend"
+                       name="endDate" min="minDate" is-open="opentwoed" datepicker-options="dateOptions"
+                       ng-required="true"  date-disabled="disabled(date, mode)"  />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="opentwo($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                <span class="input-group-btn">
+                <a  ng-href="{{export_url}}" class="btn btn-warning" ng-click="export()">导出</a>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="wrapper-md" ng-controller="rechargeindexCtrl">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            充值列表
+        </div>
+        <div class="table-responsive">
+            <div ng-grid="gridOptions" style="min-height:420px"></div>
+        </div>
+    </div>
+</div>
